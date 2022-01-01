@@ -30,6 +30,7 @@ class SingleLinkedList:
             self.cola = nuevo_nodo
         else:
             nuevo_nodo.nodo_siguiente = self.cabeza
+            self.cabeza = nuevo_nodo
         self.tamano += 1 
     
     # Metodo para insertar datos al final de la lista
@@ -43,7 +44,7 @@ class SingleLinkedList:
             self.cola = nuevo_nodo
         self.tamano += 1
 
-    # Metodo para sacar el primer elemento de la lista
+    # Metodo para eliminar el primer elemento de la lista
     def shift(self):
         if self.tamano == 0:
             self.cabeza = None
@@ -53,7 +54,24 @@ class SingleLinkedList:
             self.cabeza = nodo_eliminado.nodo_siguiente
             nodo_eliminado.nodo_siguiente = None
         self.tamano -= 1
-        return print( nodo_eliminado.valor ) 
+        return print( nodo_eliminado.valor )
+    
+
+    # Metodo para eliminar el ultimo elemento de la lista
+    def pop(self):
+        if self.tamano == 0:
+            self.cabeza = None
+            self.cola = None
+        else:
+            nodo_actual = self.cabeza
+            nueva_cola = nodo_actual
+            while nodo_actual.nodo_siguiente != None:
+                nueva_cola = nodo_actual
+                nodo_actual = nodo_actual.nodo_siguiente
+            self.cola = nueva_cola
+            self.cola.nodo_siguiente = None
+            self.tamano -= 1
+            return print( nodo_actual.valor )
 
 sll = SingleLinkedList()
 
@@ -64,4 +82,7 @@ sll.prepend('C')
 print(sll)
 
 sll.shift()
+print(sll)
+
+sll.pop()
 print(sll)
