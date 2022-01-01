@@ -35,17 +35,17 @@ class SingleLinkedList:
     # Metodo para insertar datos al final de la lista
     def append(self, valor):
         nuevo_nodo = self._Nodo(valor)
-        if  self.cabeza == None and self.cola == None:
+        if self.cabeza == None and self.cola == None:
             self.cabeza = nuevo_nodo
             self.cola = nuevo_nodo
         else:
             self.cola.nodo_siguiente = nuevo_nodo
             self.cola = nuevo_nodo
         self.tamano += 1
-        
+
     # Metodo para sacar el primer elemento de la lista
     def shift(self):
-        if  self.tamano == 0:
+        if self.tamano == 0:
             self.cabeza = None
             self.cola = None
         else:
