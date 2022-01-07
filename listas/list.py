@@ -91,6 +91,14 @@ class SingleLinkedList:
                 return nodo_actual
         else:
             return None
+            
+    # Metodo para actualizar un valor atravez de un indice
+    def update( self, indice, valor ):
+        nodo_objetivo = self.get(indice)
+        if nodo_objetivo != None:
+            nodo_objetivo.valor = valor
+        else:
+            return None
 
 sll = SingleLinkedList()
 
@@ -100,7 +108,11 @@ sll.prepend('B')
 sll.prepend('C')
 print(sll)
 
+sll.update(1, 'X')
+
 sll.get(1)
+
+
 
 sll.shift()
 print(sll)
