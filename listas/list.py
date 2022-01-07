@@ -130,6 +130,19 @@ class SingleLinkedList:
         else:
             return None
 
+    # Invierte la listas
+    def reverse(self):
+        nodos_revertidos = None
+        nodo_actual = self.cabeza
+        self.cola = nodo_actual
+        while nodo_actual != None:
+            nodo_siguiente = nodo_actual.nodo_siguiente
+            nodo_actual.nodo_siguiente = nodos_revertidos
+            nodos_revertidos = nodo_actual
+            nodo_actual = nodo_siguiente
+        self.cabeza = nodos_revertidos
+        return self.cabeza
+
 sll = SingleLinkedList()
 
 sll.append('E')
@@ -139,10 +152,12 @@ sll.prepend('A')
 sll.prepend('B')
 sll.prepend('C')
 print(sll)
-
+sll.reverse()
 sll.insert(2, 'Y')
 
 sll.update(1, 'X')
+
+
 
 sll.remove(1)
 
@@ -155,3 +170,4 @@ print(sll)
 
 sll.pop()
 print(sll)
+
