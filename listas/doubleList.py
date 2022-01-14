@@ -30,12 +30,24 @@ class DoubleLinkedList:
             self.cabeza = nuevo_nodo
         self.tamano += 1
         
+    # Agrega un elemento al final de la lista    
+    def append(self, valor):
+        nuevo_nodo = self._Nodo(valor)
+        if self.cabeza == None and self.cola == None:
+            self.cabeza = nuevo_nodo
+            self.cola = nuevo_nodo
+        else:
+            self.cola.nodo_siguiente = nuevo_nodo
+            nuevo_nodo.nodo_anterior = self.cola
+            self.cola = nuevo_nodo      
+        self.tamano += 1
+        
         
 dll = DoubleLinkedList()
 
 dll.prepend('A')
-dll.prepend('B')
+dll.append('B')
 dll.prepend('C')
-dll.prepend('D')
+dll.append('D')
 
 print(dll)
