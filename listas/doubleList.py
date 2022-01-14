@@ -56,6 +56,19 @@ class DoubleLinkedList:
         else:
             return None
         
+    # Elimina el ultimo elemento de la lista
+    def pop(self):
+        if self.tamano == 0:
+            self.cabeza = None
+            self.cola = None
+        else: 
+            nodo_eliminado = self.cola
+            self.cola = nodo_eliminado.nodo_anterior
+            self.cola.nodo_siguiente = None
+            self.cola.nodo_anterior = None
+            self.tamano -= 1
+            return print(nodo_eliminado.valor)
+        
 dll = DoubleLinkedList()
 
 dll.prepend('A')
@@ -63,6 +76,12 @@ dll.append('B')
 dll.prepend('C')
 dll.append('D')
 
+print(dll)
+
 dll.shift()
+
+print(dll)
+
+dll.pop()
 
 print(dll)
