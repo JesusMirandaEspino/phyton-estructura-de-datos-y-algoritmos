@@ -42,6 +42,19 @@ class DoubleLinkedList:
             self.cola = nuevo_nodo      
         self.tamano += 1
         
+    # Elimina el primer elemento de la lista
+    def shift(self):
+        if self.tamano == 0:
+            self.cabeza = None
+            self.cola = None
+        elif self.cabeza != None:
+            nodo_eliminado = self.cabeza
+            self.cabeza = nodo_eliminado.nodo_siguiente
+            nodo_eliminado.nodo_siguiente = None
+            self.tamano -= 1
+            return print(nodo_eliminado.valor)
+        else:
+            return None
         
 dll = DoubleLinkedList()
 
@@ -49,5 +62,7 @@ dll.prepend('A')
 dll.append('B')
 dll.prepend('C')
 dll.append('D')
+
+dll.shift()
 
 print(dll)
