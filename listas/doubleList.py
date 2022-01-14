@@ -68,7 +68,37 @@ class DoubleLinkedList:
             self.cola.nodo_anterior = None
             self.tamano -= 1
             return print(nodo_eliminado.valor)
+    # Obtiene un nodo dado un indice
+    def get(self, indice):
+        if indice == self.tamano - 1:
+            print(self.cola.valor)
+            return self.cola
+        elif indice == 0:
+            print( self.cabeza.valor)
+            return self.cabeza
+        elif not ( indice >= self.tamano or indice < 0):
+            indice_balanceado = int(self.tamano / 2)
+            if indice <= indice_balanceado:
+                nodo_actual = self.cabeza
+                contador = 0
+                while contador != indice:
+                    nodo_actual = nodo_actual.nodo_siguiente
+                    contador += 1
+                print(nodo_actual.valor)
+                return nodo_actual    
+            else:
+                nodo_actual = self.cola
+                contador = self.tamano -1
+                while contador != indice:
+                    nodo_actual = nodo_actual.nodo_anterior
+                    contador -= 1
+                print(nodo_actual.valor)
+                return nodo_actual 
+        else:
+            return None
         
+                    
+                    
 dll = DoubleLinkedList()
 
 dll.prepend('A')
@@ -83,5 +113,10 @@ dll.shift()
 print(dll)
 
 dll.pop()
+
+print(dll)
+
+
+dll.get(1)
 
 print(dll)
