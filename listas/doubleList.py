@@ -169,7 +169,3 @@ print(dll)
 dll.insert(1, 'M')
 
 print(dll)
-
-dll.remove(1)
-
-print(dll)
