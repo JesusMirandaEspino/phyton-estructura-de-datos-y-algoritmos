@@ -122,20 +122,21 @@ class DoubleLinkedList:
             return None
         
     # Saca un elemento de donde sea de la lista dado el indice
-    def  remove(self, indice):  
+    def remove(self, indice):
+        # Saca un elemento de donde sea de la linkedlist dado un indice
         if indice == 0:
             return self.shift()
-        elif indice == self.tamano - 1:
+        elif indice == self.tamaño - 1:
             return self.pop()
-        elif not (indice >= self.tamano or indice < 0 ):
+        elif not (indice >= self.tamaño or indice < 0):
             nodo_removido = self.get(indice)
             nodos_anteriores = nodo_removido.nodo_anterior
             nodos_siguientes = nodo_removido.nodo_siguiente
             nodos_anteriores.nodo_siguiente = nodos_siguientes
-            nodos_siguientes.nodo_anterior = nodos_anteriores
+            nodos_siguientes.nodo_anterior  = nodos_anteriores
             nodo_removido.nodo_anterior = None
             nodo_removido.nodo_siguiente = None
-            self.tamano -= 1
+            self.tamaño -= 1
             return nodo_removido
         else:
             return None
@@ -166,5 +167,9 @@ print(dll)
 
 
 dll.insert(1, 'M')
+
+print(dll)
+
+dll.remove(1)
 
 print(dll)
