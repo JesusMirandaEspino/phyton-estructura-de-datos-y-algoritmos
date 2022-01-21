@@ -105,9 +105,25 @@ class DoubleLinkedList:
         else:
             return None
     
-    
-    
-                    
+    # Metodo para insertar elementos
+    def insert(self, indice, valor):
+        if indice == self.tamano - 1:
+            return self.append(valor)
+        elif not( indice >= self.tamano or indice < 0):
+            nuevo_nodo = self._Nodo(valor)
+            nodos_anteriores = self.get(indice)
+            nodos_siguientes = nodos_anteriores.nodo_siguiente
+            nodos_anteriores.nodo_siguiente = nuevo_nodo
+            nuevo_nodo.nodo_anterior = nodos_anteriores
+            nuevo_nodo.nodo_siguiente = nodos_siguientes
+            nodos_siguientes.nodo_anterior = nuevo_nodo
+            self.tamano += 1
+        else:
+            return None
+        
+        
+        
+        
 dll = DoubleLinkedList()
 
 dll.prepend('A')
@@ -127,5 +143,10 @@ print(dll)
 
 
 dll.get(1)
+
+print(dll)
+
+
+dll.insert(1, 'M')
 
 print(dll)
