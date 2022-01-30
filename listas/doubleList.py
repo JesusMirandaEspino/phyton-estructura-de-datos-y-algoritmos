@@ -140,6 +140,18 @@ class DoubleLinkedList:
             return nodo_removido
         else:
             return None
+        
+    # Reversa el orden de la listas
+    def reverse(self):
+        nodos_revertidos = None
+        nodo_actual = self.cabeza
+        self.cola = nodo_actual
+        while nodo_actual != None:
+            nodos_revertidos = nodo_actual.nodo_anterior
+            nodo_actual.nodo_anterior = nodo_actual.nodo_siguiente
+            nodo_actual.nodo_siguiente = nodos_revertidos
+            nodo_actual = nodo_actual.nodo_anterior
+        self.cabeza = nodos_revertidos.nodo_anterior
 
         
         
