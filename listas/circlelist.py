@@ -22,3 +22,14 @@ class circleLinkeList:
             else:
                 break
         return str(array) + ' Tamaño: ' + str(self.tamano)
+    # Agrega un elemento al inicio de la lista
+    def prepend(self, valor):
+        nuevo_nodo = self._Nodo(valor)
+        if self.cabeza == None and self.cola == None:
+            self.cabeza = nuevo_nodo
+            self.cola = nuevo_nodo
+        else:
+            nuevo_nodo.nodo_siguiente = self.cabeza
+            self.cola.nodo_siguiente = nuevo_nodo
+            self.cabeza = nuevo_nodo
+        self.tamano += 1
