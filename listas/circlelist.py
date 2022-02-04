@@ -60,4 +60,22 @@ class circleLinkeList:
             self.tamano -= 1
             return print(nodo_eliminado.valor)
 
-    
+    # Elimina el ultimo elemento de la lista
+    def pop(self):
+        if self.tamano == 0:
+            self.cabeza = None
+            self.cola = None
+        else:
+            nodo_actual = self.cabeza
+            nueva_cola = nodo_actual
+            contador = self.tamano
+            while contador != 0:
+                if nodo_actual.nodo_siguiente != self.cabeza:
+                    nueva_cola = nodo_actual
+                    nodo_actual = nodo_actual.nodo_siguiente
+                else:
+                    break
+            self.cola = nueva_cola
+            self.cola.nodo_siguiente = self.cabeza
+            self.tamano -= 1
+            return print(nodo_actual.valor)
