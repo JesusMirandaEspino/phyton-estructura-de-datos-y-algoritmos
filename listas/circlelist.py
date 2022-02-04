@@ -106,3 +106,17 @@ class circleLinkeList:
             nodo_objetivo.valor = valor
         else:
             return None
+
+    # Metodo para inserta un valor dentro de un incide elegido
+    def insert(self, indice, valor):
+        if indice == self.tamano - 1:
+            return self.append(valor)
+        elif not (indice >= self.tamano or indice < 0):
+            nuevo_nodo = self._Nodo(valor)
+            nodos_anteriores = self.get(indice)
+            nodos_siguientes = nodos_anteriores.nodo_siguiente
+            nodos_anteriores.nodo_siguiente = nuevo_nodo
+            nuevo_nodo.nodo_siguiente = nodos_siguientes
+            self.tamano += 1
+        else:
+            return None
