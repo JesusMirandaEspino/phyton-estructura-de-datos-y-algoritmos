@@ -120,3 +120,19 @@ class circleLinkeList:
             self.tamano += 1
         else:
             return None
+
+    # Saca un elemento de donde sea de la lista dado el indice
+    def remove(self, indice):
+        if indice == 0:
+            return self.shift()
+        elif indice == self.tamano - 1:
+            return self.pop()
+        elif not (indice >= self.tamano or indice < 0):
+            nodos_anteriores = self.get(indice - 1)
+            nodo_removido = nodos_anteriores.nodo_siguiente
+            nodos_anteriores.nodo_siguiente = nodo_removido.nodo_siguiente
+            nodo_removido.nodo_siguiente = None
+            self.tamano -= 1
+            return nodo_removido
+        else:
+            return None
