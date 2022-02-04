@@ -98,3 +98,11 @@ class circleLinkeList:
                 return nodo_actual
         else:
             return None
+
+    # Metodo para actualizar un valor atravez de un indice
+    def update(self, indice, valor):
+        nodo_objetivo = self.get(indice)
+        if nodo_objetivo != None:
+            nodo_objetivo.valor = valor
+        else:
+            return None
