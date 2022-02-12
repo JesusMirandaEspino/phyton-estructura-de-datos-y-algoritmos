@@ -68,3 +68,18 @@ class circleDoubleLinkeList:
             nodo_eliminado.nodo_siguiente = None
             self.tamano -= 1
             return print(nodo_eliminado.valor)
+
+    # Elimina el ultimo elemento de la lista
+    def pop(self):
+        if self.tamano == 0:
+            self.cabeza = None
+            self.cola = None
+        else:
+            nodo_eliminado = self.cola
+            self.cola = nodo_eliminado.nodo_anterior
+            self.cola.nodo_siguiente = self.cabeza
+            self.cabeza.nodo_anterior = self.cola
+            nodo_eliminado.nodo_anterior = None
+            nodo_eliminado.nodo_siguiente = None
+            self.tamano -= 1
+            return print(nodo_eliminado.valor)
