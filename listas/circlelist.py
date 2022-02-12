@@ -136,3 +136,23 @@ class circleLinkeList:
             return nodo_removido
         else:
             return None
+
+    # Revierte la listas
+    def reverse(self):
+        nodos_revertidos = None
+        nodo_actual = self.cabeza
+        self.cola = nodo_actual
+        pivote = True
+        contador = self.tamano
+        while contador != 0:
+            if pivote != False or nodo_actual == self.cabeza:
+                nodo_siguiente = nodo_actual.nodo_siguiente
+                nodo_actual.nodo_siguiente = nodos_revertidos
+                nodos_revertidos = nodo_actual
+                nodo_actual = nodo_siguiente
+                pivote = False
+            else:
+                break
+        self.cabeza = nodos_revertidos
+        self.cola.nodo_siguiente = self.cabeza
+        
