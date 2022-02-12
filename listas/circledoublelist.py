@@ -54,3 +54,17 @@ class circleDoubleLinkeList:
             self.cola = nuevo_nodo
         self.tamano += 1
 
+    # Elimina el primer elemento de la lista
+    def shift(self):
+        if self.tamano == 0:
+            self.cabeza = None
+            self.cola = None
+        else:
+            nodo_eliminado = self.cabeza
+            self.cabeza = nodo_eliminado.nodo_siguiente
+            self.cabeza.nodo_anterior = self.cola
+            self.cola.nodo_siguiente = self.cabeza
+            nodo_eliminado.nodo_anterior = None
+            nodo_eliminado.nodo_siguiente = None
+            self.tamano -= 1
+            return print(nodo_eliminado.valor)
