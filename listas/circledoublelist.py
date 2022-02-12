@@ -40,4 +40,17 @@ class circleDoubleLinkeList:
             self.cabeza = nuevo_nodo
         self.tamano += 1
 
+    # Agrega un elemento al final de la lista
+    def append(self, valor):
+        nuevo_nodo = self._Nodo(valor)
+        if self.cabeza == None and self.cola == None:
+            self.cabeza = nuevo_nodo
+            self.cola = nuevo_nodo
+        else:
+            self.cola.nodo_siguiente = nuevo_nodo
+            nuevo_nodo.nodo_anterior = self.cola
+            nuevo_nodo.nodo_siguiente = self.cabeza
+            self.cabeza.nodo_anterior = nuevo_nodo
+            self.cola = nuevo_nodo
+        self.tamano += 1
 
