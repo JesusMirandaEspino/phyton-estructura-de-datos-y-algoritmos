@@ -27,3 +27,40 @@ class Tree:
         self.raiz = None
         self.tamano = 0
         
+        
+    def insert(self, valor, padre):
+        if self.raiz == None:
+            self.raiz = self.Csll()
+            self.raiz.append(valor, None)
+        else:
+            nodo_actual = self.raiz.cabeza
+            def recorrer( nodo, nodo_prueba = None ):
+                nodo_aux = nodo.padre
+                if valor == padre:
+                    return False
+                elif nodo.valor == padre:
+                    if nodo.hijo == None:
+                        nodo.hijo = self.Csll()
+                        nodo.hijo.append(valor, nodo)
+                        self.tamano += 1
+                        return True
+                    else:
+                        nodo.hijo.append(valor.nodo)
+                        self.tamano += 1
+                        return True
+                else:
+                    if nodo.hijo != None:
+                        if nodo.hijo.cabeza.valor == nodo_prueba:
+                            if nodo.valor == self.raiz.cabeza.valor:
+                                return False
+                            elif nodo.nodo_siguiente.valor != nodo_aux.hijo.cabeza.valor:
+                                return recorrer( nodo.nodo_siguiente, nodo.valor )
+                            else:
+                                return recorrer( nodo.padre, nodo.nodo_siguiente.valor )
+                        else:
+                            return recorrer( nodo.hijo.cabeza, nodo.hijo.cabeza.valor )
+                    elif nodo.nodo_siguiente.valor != nodo_aux.hijo.cabeza.valor:
+                        return recorrer( nodo.nodo_siguiente, nodo.valor )
+                    else:
+                        return recorrer( nodo.padre, nodo.nodo_siguiente.valor )
+            return recorrer( nodo_actual )
