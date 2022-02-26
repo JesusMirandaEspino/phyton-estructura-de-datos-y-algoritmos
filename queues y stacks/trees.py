@@ -117,5 +117,32 @@ class Tree:
         recorrer( nodo_actual)
         print( contenedor )
                 
+    
+    def postorder( self ):
+        contenedor = []
+        nodo_actual = self.raiz.cabeza
+        def recorrer(nodo, nodo_prueba = None ):
+            nodo_aux = nodo.padre
+            if nodo.hijo != None:
+                if nodo.hijo.cabeza.valor == nodo_prueba:
+                    contenedor.append(nodo.valor)
+                    if nodo.valor == self.raiz.cabeza.valor:
+                        return None
+                    elif nodo.nodo_siguiente.valor != nodo_aux.hijo.cabeza.valor:
+                        return recorrer( nodo.nodo_siguiente, nodo.valor )
+                    else:
+                        return recorrer( nodo.padre, nodo.nodo_siguiente.valor )
+                else:
+                    return recorrer( nodo.hijo.cabeza, nodo.hijo.cabeza.valor )
+            elif nodo.nodo_siguiente.valor != nodo_aux.hijo.cabeza.valor:
+                contenedor.append(nodo.valor)
+                return recorrer( nodo.nodo_siguiente, nodo.valor )
+            else:
+                contenedor.append(nodo.valor)
+                return recorrer( nodo.padre, nodo.nodo_siguiente.valor )
+        recorrer( nodo_actual)
+        print( contenedor )
+            
+                
             
         
