@@ -64,3 +64,28 @@ class Tree:
                     else:
                         return recorrer( nodo.padre, nodo.nodo_siguiente.valor )
             return recorrer( nodo_actual )
+    
+    def fin(self, valor):
+        nodo_actual = self.raiz.cabeza
+        def recorrer(nodo,  nodo_prueba = None ):
+            nodo_aux = nodo.padre
+            if nodo.valor == valor:
+                return nodo.valor
+            elif nodo.hijo != None:
+                if nodo.hijo.cabez.valor == nodo_prueba:
+                    if nodo.valor == self.raiz.cabeza.valor:
+                        return 'No exite el nodo buscado'
+                    elif nodo.nodo_siguiente.valor != nodo_aux.hijo.cabeza.valor:
+                        return recorrer( nodo.nodo_siguiente, nodo.valor )
+                    else:
+                        return recorrer( nodo.padre, nodo.nodo_siguiente.valor )
+                else:
+                    return recorrer( nodo.hijo.cabeza, nodo.hijo.cabeza.valor  )
+            elif nodo.nodo_siguiente.valor != nodo_aux.hijo.cabeza.valor:
+                return recorrer( nodo.nodo_siguiente, nodo.valor )
+            else:
+                return recorrer( nodo.padre, nodo.nodo_siguiente.valor )
+        nodo_encontrado = recorrer( nodo_actual )
+        return print( nodo_encontrado )
+            
+        
