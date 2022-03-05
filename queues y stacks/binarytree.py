@@ -29,6 +29,25 @@ class binarytree:
                     else: 
                         return recorrer( valor, nodo.rama_derecha )
             recorrer( valor, self.raiz)
+            
+            
+    def find( self, valor ):
+        def recorrer( valor, nodo):
+            if valor == nodo.valor:
+                return nodo.valor
+            elif valor < nodo.valor:
+                if nodo.rama_izquierda == None:
+                    return 'No existe el elemnto buscado'
+                else:
+                    return recorrer( valor, nodo.rama_izquierda )
+            else:
+                if nodo.rama_derecha == None:
+                    return 'No existe el elemento buscado'
+                else:
+                    return recorrer( valor, nodo.rama_derecha)
+        nodo_encontrado = recorrer( valor, self.raiz )
+        return print( nodo_encontrado )
+            
                 
 bst = binarytree()
 
@@ -38,4 +57,4 @@ bst.insert(65)
 bst.insert(85)
 
 
-bst.insert(45)
+bst.find(75)
