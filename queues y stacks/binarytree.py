@@ -47,8 +47,70 @@ class binarytree:
                     return recorrer( valor, nodo.rama_derecha)
         nodo_encontrado = recorrer( valor, self.raiz )
         return print( nodo_encontrado )
-            
+    
+    
+    def delete( self, valor ):
+            def recorrer( valor, nodo, nodo_anterior ):
                 
+                if valor == nodo_anterior:
+                    
+                    if nodo.rama_izquierda == None and nodo.rama_derecha == None:
+                        if nodo_anterior.rama_izquierda != None:
+                            if nodo_anterior.rama_izquierda.valor ==  nodo.valor:
+                                nodo.anterio.rama_izquierda = None
+                                
+                        if nodo_anterior.rama_derecha != None:
+                            if nodo_anterior.rama_derecha.valor ==  nodo.valor:
+                                nodo.anterio.rama_derecha = None
+                        nodo = None
+                        
+                    elif nodo.rama_izquierda == None and nodo.rama_derecha != None:
+                        
+                        if nodo.anterior.rama_izquierda != None:
+                            if nodo_anterior.rama_izquierda.valor ==  nodo.valor:
+                                nodo_anterior.rama_izquierda = nodo.rama_derecha
+                                
+                        if nodo_anterior.rama_derecha != None:
+                            if nodo_anterior.rama_derecha.valor ==  nodo.valor:
+                                nodo_anterior.rama_derecha = nodo.rama_derecha
+                                
+                    elif nodo.rama_derecha == None and nodo.rama_izquierda != None:
+                        
+                        if nodo.anterior.rama_izquierda != None:
+                            if nodo_anterior.rama_izquierda.valor ==  nodo.valor:
+                                nodo_anterior.rama_izquierda = nodo.rama_izquierda
+                                
+                        if nodo_anterior.rama_derecha != None:
+                            if nodo_anterior.rama_derecha.valor ==  nodo.valor:
+                                nodo_anterior.rama_derecha = nodo.rama_izquierda
+                    else:
+                        nodo_comodin = None
+                        nodo_anterior = nodo
+                        nodo = nodo.rama_derecha
+                        
+                        while nodo.rama_izquierda != None:
+                            nodo_comodin = nodo
+                            nodo = nodo.rama_izquierda
+                        nodo_anterior.valor = nodo.valor
+                        if nodo.rama_derecha != None:
+                            nodo_comodin.rama_izquierda = nodo.rama_derecha
+                        else:
+                            nodo_comodin.rama_izquierda = None
+                        nodo = None
+                elif valor < nodo.valor:
+                    if nodo.rama_izquierda == None:
+                        return 'No existe el elemento buscado'
+                    else:
+                        return recorrer( valor, nodo.rama_izquierda, nodo)
+                else:
+                    if nodo.rama_derecha == None:
+                        return 'No existe el elemento buscado'
+                    else:
+                        return recorrer( valor, nodo.rama_derecha, nodo)
+            recorrer( valor, self.raiz, self.raiz )
+                        
+                            
+                            
 bst = binarytree()
 
 bst.insert(45)
@@ -58,3 +120,5 @@ bst.insert(85)
 
 
 bst.find(75)
+
+bst.delete(45)
