@@ -142,8 +142,21 @@ class binarytree:
             contenedor.append( nodo.valor )
         recorrer( self.raiz )
         return print( contenedor )
-        
-                            
+    
+    def breath_first_search( self ):
+        contenedor_1 = [ self.raiz ]
+        contenedor_2 = [ self.raiz.valor ]
+        while len( contenedor_1 ) != 0:
+            nodo = contenedor_1[0]
+            if nodo.rama_izquierda != None:
+                contenedor_1.append( nodo.rama_izquierda )
+                contenedor_2.append( nodo.rama_izquierda.valor )
+            if nodo.rama_izquierda != None:
+                contenedor_1.append( nodo.rama_derecha )
+                contenedor_2.append( nodo.rama_derecha.valor )
+            contenedor_1.pop( 0 )
+        return print(contenedor_2)
+                                
                             
 bst = binarytree()
 
