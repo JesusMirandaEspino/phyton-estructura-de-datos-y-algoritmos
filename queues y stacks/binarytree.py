@@ -130,6 +130,19 @@ class binarytree:
                 recorrer( nodo.rama_derecha )
         recorrer( self.raiz )
         return print( contenedor )
+    
+    
+    def postorder( self ):
+        contenedor = []
+        def recorrer(nodo):
+            if nodo.rama_izquierda != None:
+                recorrer( nodo.rama_izquierda )
+            if nodo.rama_derecha != None:
+                recorrer( nodo.rama_derecha )
+            contenedor.append( nodo.valor )
+        recorrer( self.raiz )
+        return print( contenedor )
+        
                             
                             
 bst = binarytree()
