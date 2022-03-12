@@ -108,7 +108,28 @@ class binarytree:
                     else:
                         return recorrer( valor, nodo.rama_derecha, nodo)
             recorrer( valor, self.raiz, self.raiz )
+            
+    def preoder(self):
+        contenedor = []
+        def recorrer(nodo):
+            contenedor.append(nodo.valor)
+            if nodo.rama_izquierda != None:
+                recorrer( nodo.rama_izquierda )
+            if nodo.rama_derecha != None:
+                recorrer( nodo.rama_derecha )
+        recorrer( self.raiz )
+        return print( contenedor )
                         
+    def inorder( self ):
+        contenedor = []
+        def recorrer(nodo):
+            if nodo.rama_izquierda != None:
+                recorrer( nodo.rama_izquierda )
+            contenedor.append( nodo.valor )
+            if nodo.rama_derecha != None:
+                recorrer( nodo.rama_derecha )
+        recorrer( self.raiz )
+        return print( contenedor )
                             
                             
 bst = binarytree()
