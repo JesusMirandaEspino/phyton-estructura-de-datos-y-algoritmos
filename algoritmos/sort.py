@@ -1,5 +1,5 @@
 def selectionsort(lista):
-    for i in range(len(lista)):
+    for i in range( 1, len(lista)):
         indice_mas_pequeno = i
         for j in range( i + 1, len(lista) ):
             if lista[j] < lista[indice_mas_pequeno]:
